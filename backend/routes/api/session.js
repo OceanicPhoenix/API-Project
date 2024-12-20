@@ -8,6 +8,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { User } = require('../../db/models');
 
+//login validation middleware
 const validateLogin = [
   check('credential')
     .exists({ checkFalsy: true })
@@ -69,7 +70,7 @@ router.post(
   );
 
 
-// Restore session user
+// Restore session user, otherwise null
 router.get(
   '/',
   (req, res) => {

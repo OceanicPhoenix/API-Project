@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'Booking',
+    modelName: 'Review',
   });
-  return Booking;
+  return Review;
 };
