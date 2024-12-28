@@ -69,4 +69,19 @@ const setTokenCookie = (res, user) => {
     return next(err);
   };
 
-  module.exports = { setTokenCookie, restoreUser, requireAuth };
+
+  const requireProperAuth = function(res){
+    res.status(403).json({
+      "message": "Forbidden",
+      "statusCode": 403
+    });
+  }
+  
+  const successfulDeleteRes = function(res) {
+    res.status(200).json({
+        "message": "Successfully deleted",
+        "statusCode": 200
+    });
+  }
+  
+    module.exports = { setTokenCookie, restoreUser, requireAuth, requireProperAuth, successfulDeleteRes };

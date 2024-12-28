@@ -31,15 +31,6 @@ module.exports = {
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       }
     });
-
-    await queryInterface.addIndex(
-      'SpotImages',
-      ['spotId', 'preview'],
-      {
-        name: 'at-most-one-preview-per-spot',
-        where: { preview: true },
-        unique: true
-      });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('SpotImages');
