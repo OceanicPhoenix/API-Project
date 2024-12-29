@@ -179,7 +179,7 @@ async function getSpots(req,res){
             lng: Number(spotJson.lng),
             name: spotJson.name,
             description: spotJson.description,
-            price: spotJson.price,
+            price: Number(spotJson.price),
             createdAt: spotJson.createdAt,
             updatedAt: spotJson.updatedAt,
             avgRating:spotJson.avgRating,
