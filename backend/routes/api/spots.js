@@ -210,22 +210,6 @@ async function isSpotOwner(req, res, next){
     }
 }
 
-////Middleware for check proper authorization to create bookings
-async function CreateBookingsAuth(req, res, next){
-    const spot = await Spot.findByPk(req.params.spotId);
-
-    //Couldn't find a Spot with the id
-    if (!spot) {
-        return res.status(404).json({
-            "message": "Spot couldn't be found",
-            "statusCode": 404
-        })
-    }
-
-    req.spot = spot;
-    return next();
-}
-
 
 //* Get all Spots
 router.get('/', validateSpotQuery, async (req, res) => {
@@ -457,7 +441,7 @@ router.get('/:spotId/reviews', async (req, res) => {
     if (!reviews.length) {
         return res.status(404).json({ message: "Spot couldn't be found" });
     }
-    const formatedReviews = reviews.map((review) => {
+    const formattedReviews = reviews.map((review) => {
         const reviewJson = review.toJSON();
         if (reviewJson.Spot) {
             reviewJson.Spot.previewImage = reviewJson.Spot.SpotImages[0].url;
@@ -478,7 +462,7 @@ router.get('/:spotId/reviews', async (req, res) => {
                 ReviewImages: reviewJson.ReviewImages
         };
     })
-    res.json({ Reviews: formatedReviews });
+    res.json({ Reviews: formattedReviews });
 }catch (error) {
     console.info('An error occurred while getting reviews for a spot:', error);
     res.status(404).json({ message: "Spot couldn't be found" });
@@ -554,7 +538,8 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
         })
             res.json({ Bookings: formattedBookings });
 
-        } else {
+        } 
+        else {
         const op = {
             where: { spotId: req.params.spotId },
             attributes: ['spotId', 'startDate', 'endDate']
@@ -573,8 +558,8 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
         })
         res.json({ Bookings: formattedBookings});
         }
-    }}catch (error) {
-
+    }}
+    catch (error) {
         console.error('An error occurred while getting bookings for a spot:', error);
         res.status(500).json({ error: "An error occurred while getting bookings for a spot" });
       }
