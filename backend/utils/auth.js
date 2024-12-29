@@ -80,7 +80,6 @@ const setTokenCookie = (res, user) => {
   const successfulDeleteRes = function(res) {
     res.status(200).json({
         "message": "Successfully deleted",
-        "statusCode": 200
     });
   }
   

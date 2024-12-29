@@ -14,25 +14,34 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Review.init({
-    spotId: {
+    review: {
+        type: DataTypes.STRING(255),
+        allowNull: false
+    },
+    stars: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+    spotId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'Spot',
+            key: 'id'
+        }
     },
     userId: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+            model: 'User',
+            key: 'id'
+        }
     },
-    startDate: {
-        type: DataTypes.DATE,
-        allowNull: false
-    },
-    endDate: {
-        type: DataTypes.DATE,
-        allowNull: false
-    }
   }, {
     sequelize,
     modelName: 'Review',
+    ...options
   });
   return Review;
 };

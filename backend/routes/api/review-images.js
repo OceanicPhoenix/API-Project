@@ -4,7 +4,7 @@ const { Spot, Review, SpotImage, User, sequelize, ReviewImage, Booking } = requi
 const router = express.Router();
 
 async function reviewImageAuth(req,res,next){
-    const reviewImage = await reviewImage.findByPk(req.params.imageId);
+    const reviewImage = await ReviewImage.findByPk(req.params.imageId);
     if(reviewImage){
         req.reviewImage = reviewImage;
         const review = await Review.findByPk(reviewImage.reviewId);
@@ -13,7 +13,6 @@ async function reviewImageAuth(req,res,next){
     }else{
     res.status(404).json({
         "message": "Review Image couldn't be found",
-        "statusCode": 404
      });}
 }
 

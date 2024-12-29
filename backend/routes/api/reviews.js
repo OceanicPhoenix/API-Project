@@ -31,12 +31,11 @@ async function reviewAuth(req,res,next){
     req.review = review;
     if(req.review.userId === req.user.id) {
         return next();
-    }else{
+    }
+    else{
         requireProperAuth(res);
     }
 }
-
-
 
 //* Get all Reviews of the Current User
 router.get('/current', requireAuth,  async (req, res) => {
@@ -51,11 +50,11 @@ router.get('/current', requireAuth,  async (req, res) => {
                 attributes: {
                     exclude: ['createdAt', 'updatedAt','description']
                 },
-                include: {
-                    model: SpotImage,
-                    attributes: ['url'],
-                    where: { preview: true }
-                },
+                // include: {
+                //     model: SpotImage,
+                //     attributes: ['url'],
+                //     where: { preview: true }
+                // },
             },
             {
                 model: ReviewImage,
@@ -65,15 +64,15 @@ router.get('/current', requireAuth,  async (req, res) => {
         where: { userId: req.user.id }
     });
 
-    const formattedReviews = reviews.map((review,i)=>{
-        const reviewJson = review.toJSON();
-        if (reviewJson.Spot) {
-            reviewJson.Spot.previewImage = reviewJson.Spot.SpotImages[0].url;
-            delete reviewJson.Spot.SpotImages;
-            delete reviewJson.Spot.description;
+    const formattedReviews = await Promise.all((reviews || []).map(async(reviewJson)=>{
+        const spot = reviewJson.Spot.toJSON();
+        const i = await SpotImage.findOne({where: {spotId: spot.id}});
+        if (spot) {
+            const image = await SpotImage.findOne({where: {spotId: reviewJson.Spot.id}});
+            spot.previewImage = image ? image.url : "";
         }
 
-        return {
+        const enriched = {
             id: reviewJson.id,
             userId: reviewJson.userId,
             spotId: reviewJson.spotId,
@@ -82,10 +81,12 @@ router.get('/current', requireAuth,  async (req, res) => {
             createdAt: reviewJson.createdAt,
             updatedAt: reviewJson.updatedAt,
             User: reviewJson.User,
-            Spot: reviewJson.Spot,
+            Spot: spot,
             ReviewImages: reviewJson.ReviewImages,
         }
-    })
+
+        return enriched;
+    }));
 
     res.json({ Reviews:formattedReviews });
 });
@@ -111,7 +112,7 @@ router.post('/:reviewId/images', requireAuth, reviewAuth, async (req, res) => {
         reviewId: req.params.reviewId,
         url: req.body.url
     });
-    res.status(200).json({
+    res.status(201).json({
         id:newImage.id,
         url:newImage.url
 });
