@@ -27,6 +27,5 @@ router.delete('/:imageId', requireAuth, SpotImageAuth, async (req, res) => {
     }
     else requireProperAuth(res);
 });
-// * Delete a Spot Image
 
 module.exports = router;

@@ -148,7 +148,7 @@ async function getSpots(req,res){
 
     const spots = await Spot.findAll(options);
 
-         const formattedSpots = spots.map((spot,i )=>{
+         const formattedSpots = spots.map((spot)=>{
             const spotJson = spot.toJSON();
             const reviews = spot.Reviews;
             const spotImages = spot.SpotImages;
@@ -193,7 +193,6 @@ async function getSpots(req,res){
 //Middleware for check proper authorization of current user
 async function isSpotOwner(req, res, next){
     const spot = await Spot.findByPk(req.params.spotId);
-
     //Couldn't find a Spot with the id
     if (!spot) {
         return res.status(404).json({
