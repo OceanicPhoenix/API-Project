@@ -152,20 +152,22 @@ async function getSpots(req,res){
             const spotJson = spot.toJSON();
             const reviews = spot.Reviews;
             const spotImages = spot.SpotImages;
+            console.log('getting spot images we');
+            console.log('spot images',spot?.SpotImages);
 
-            //calculate the avg rating
+            //avg rating
             if (reviews.length > 0) {
               const sum = reviews.reduce((acc, review) => acc + review.stars, 0);
-              spotJson.avgRating = (sum / (reviews.length)).toFixed(1);//round tp decimal
+              spotJson.avgRating = (sum / (reviews.length)).toFixed(1);//1 decimal place
             } else {
               spot.avgRating = 0;
          }
 
-         //get preview image
+         //getting preview image
          if (spotImages.length) {
                 spotJson.previewImage = spot.SpotImages[0].url;
               } else {
-                spot.previewImage = null;
+                spot.previewImage = "";
               };
 
         return {
@@ -193,7 +195,6 @@ async function getSpots(req,res){
 //Middleware for check proper authorization of current user
 async function isSpotOwner(req, res, next){
     const spot = await Spot.findByPk(req.params.spotId);
-    //Couldn't find a Spot with the id
     if (!spot) {
         return res.status(404).json({
             "message": "Spot couldn't be found",
@@ -245,7 +246,6 @@ router.get('/current', requireAuth, async (req, res) => {
       res.json({ Spots: userSpotsArr });
     } 
     catch (error) {
-      // Handle the error here, e.g., send an error response to the client
       console.error('An error occurred:', error);
       res.status(500).json({ error: 'An error occurred while processing the get spots by the current user' });
     }
