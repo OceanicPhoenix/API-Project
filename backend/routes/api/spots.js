@@ -153,7 +153,8 @@ async function getSpots(req,res){
             const reviews = spot.Reviews;
             const spotImages = spot.SpotImages;
             console.log('getting spot images we');
-            console.log('spot images',spot?.SpotImages);
+            console.log('spot images',spotImages);
+            console.log('brian test hehehehe', spotImages.length ? spotImages[0].url : spotImages);
 
             //avg rating
             if (reviews.length > 0) {
@@ -165,9 +166,10 @@ async function getSpots(req,res){
 
          //getting preview image
          if (spotImages.length) {
-                spotJson.previewImage = spot.SpotImages[0].url;
+                console.log('url spot images waaaaa',spotImages[0].url);
+                spotJson.previewImage = spotImages[0].url;
               } else {
-                spot.previewImage = "";
+                spot.previewImage = " ";
               };
 
         return {
