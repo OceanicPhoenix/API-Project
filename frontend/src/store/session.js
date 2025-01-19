@@ -7,7 +7,7 @@ const REMOVE_SESSION_USER = 'session/removeSessionUser';
 // Action Creators
 const setSessionUser = (user) => ({
     type: SET_SESSION_USER,
-    user,
+    payload: user,
 });
 
 const removeSessionUser = () => ({
