@@ -1,0 +1,27 @@
+textarea {
+    height: 400px;
+    width: 300px;
+  }
+  
+  .review-box {
+    height: 300px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute; */
+  }
+  
+  .submit-button {
+    background-color: #ff5a5f;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    max-height: 1px;
+    width: 100%;
+    padding: 14px 24px 34px;
+  
+  }

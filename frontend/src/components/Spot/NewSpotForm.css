@@ -1,0 +1,98 @@
+.errors {
+    color: red;
+    font-size: 12px;
+    height: 15px;
+    width: 220px;
+    margin: 3px;
+  }
+  
+  .new-spot {
+    display: block;
+    margin: auto;
+    width: 40%;
+    /* text-align: justify;
+    text-justify: auto; */
+  
+  }
+  
+  h3 {
+    text-align: left
+  }
+  
+  #desscription {
+    height: 400px;
+    width: 100%;
+  }
+  
+  input {
+    width: 100%;
+  }
+  
+  .city-state {
+    display: flex;
+    flex-direction: row;
+  
+  }
+  
+  
+  
+  .submit-btn {
+    background-color:  #DE006F;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 14px;
+    font-family: sans-serif;
+    height: fit-content;
+    width: 100%;
+  
+  }
+  
+  button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+  }
+  
+  .errors {
+    width: 100%;
+  }
+  
+  
+  .city {
+    width: 220%;
+    display: inline-block;
+  
+  }
+  
+  .state {
+    width: 220%;
+    display: inline-block;
+  
+  }
+  
+  .city-state {
+    display: flex;
+    flex-direction: row;
+    gap: 20px
+  }
+  
+  .state-city-errors {
+    display: flex;
+    flex-direction: row;
+    /* gap:120px */
+    justify-content: space-around;
+  }
+  
+  .state-city-errors {
+    color: red;
+  }
+  
+  
+  .price {
+    display: flex;
+    flex-direction: row;
+    gap: 20px
+  }

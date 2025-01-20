@@ -1,0 +1,53 @@
+#delete-box {
+
+    padding-bottom: 40px;
+  
+  }
+  
+  h3 {
+    text-align: center;
+  }
+  
+  
+  .Yes-delete-button {
+    background-color: #DE006F;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    height: fit-content;
+    width: 80%;
+    padding: 14px 14px 14px 14px;
+    margin: auto
+  }
+  
+  .No-delete-button {
+    background-color: darkgray;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    height: fit-content;
+    width: 80%;
+    padding: 14px 14px 14px 14px;
+    margin: auto
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  
+  
+  }
+  
+  
+  
+  
+  .title {
+    text-align: center;
+  }
+  
+  .sub-title {
+    text-align: center;
+  }

@@ -1,0 +1,89 @@
+.spots-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 45px;
+    height: 100%;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    max-width: 96vw;
+  }
+  
+  .preview-image {
+    border-radius: 10px;
+    width: 385px;
+    height: 246px;
+  
+  }
+  
+  
+  .location_rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  
+  }
+  
+  .price {
+    font-weight: bold;
+  }
+  
+  
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  
+  }
+  
+  
+  
+  .create-new-spot-btn {
+    background-color: rgb(160, 160, 160);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 14px;
+    font-family: sans-serif;
+  
+  
+  }
+  
+  .update-btn {
+    background-color: rgb(160, 160, 160);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 14px;
+    font-family: sans-serif;
+    height: fit-content;
+  
+  }
+  
+  .operation {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: baseline;
+  }
+  
+  .rating {
+    cursor: pointer;
+  }
+  
+  p {
+  
+    cursor: pointer;
+  
+  }
+  
+  .single-spot-intro {
+    cursor: pointer;
+  }

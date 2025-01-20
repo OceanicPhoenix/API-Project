@@ -1,0 +1,95 @@
+.spot-detail-header {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+  
+  }
+  
+  
+  .img-container {
+    display: flex;
+    height: 550px;
+  
+  }
+  
+  .main-pic {
+    object-fit: cover;
+    width: 50%;
+    height: 100%;
+  }
+  
+  .sub-pic {
+    object-fit: cover;
+    width: 100%;
+    height: 270px;
+  }
+  
+  .right {
+    display: grid;
+    padding-left: 8px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .review-container {
+  
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    width: 100%;
+    /* gap: 100px; */
+  
+  }
+  
+  .description {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    width: 100%;
+    gap: 100px;
+  
+  }
+  
+  .reserve-button {
+    display: flex;
+  }
+  
+  .name-and-description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  
+  
+  .description {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(220, 220, 220);
+  }
+  
+  
+  .spot-container {
+  
+    max-width: 1150px;
+    padding-bottom: 30px;
+  
+  }
+  
+  .description {
+  
+  
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    width: 100%;
+    gap: 100px;
+  
+  }
+  
+  .parent-container {
+    height: max-content;
+    width: 100%;
+  margin-left: 200px;
+  
+  }

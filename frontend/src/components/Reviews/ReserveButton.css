@@ -1,0 +1,42 @@
+.reserve-container {
+    align-items: center;
+    border: 1px solid rgb(190,190,190);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    min-width: 310px;
+    padding: 30px 30px;
+    margin-right: 10px;
+    /* box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),; */
+    box-shadow: 5px 1px 5px gray;
+  }
+  .rating-and-quantity{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 30px;
+  }
+  
+  
+  .spot-button {
+  
+    background-color:#ff5a5f;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    height: 40px;
+    width: 100%;
+    padding: 14px 24px 34px;
+  
+  }

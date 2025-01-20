@@ -1,0 +1,43 @@
+#spots-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 45px;
+    height: 100%;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    max-width: 96vw;
+    cursor: pointer;
+    margin-left: 200px;
+  }
+  
+  .preview-image {
+    border-radius: 10px;
+    width: 385px;
+    height: 246px;
+  
+  }
+  
+  .location_rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  
+  }
+  
+  .price {
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .preview-image {
+    cursor: pointer;
+  }
+  
+  .location {
+    cursor: pointer;
+  }
+  
+  .rating {
+    cursor: pointer;
+  }

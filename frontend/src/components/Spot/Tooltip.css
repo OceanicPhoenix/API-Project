@@ -1,0 +1,48 @@
+
+
+/* Wrapping */
+.Tooltip-Wrapper {
+    display: inline-block;
+    position: relative;
+  }
+  
+  /* Absolute positioning */
+  .Tooltip-Tip {
+    position: absolute;
+    border-radius: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px;
+    color:white;
+    background: black;
+    font-size: 14px;
+    font-family: sans-serif;
+    line-height: 1;
+    z-index: 100;
+    white-space: nowrap;
+  }
+  
+  /* Absolute positioning */
+  .Tooltip-Tip.top {
+    top: 40px;
+  }
+  /* CSS border triangles */
+  .Tooltip-Tip.top::before {
+    top: 100%;
+    border-top-color: var(--tooltip-background-color);
+  }
+  
+  
+  
+  /* CSS border triangles */
+  .Tooltip-Tip.top::before {
+    top: 100%;
+    border-top-color: black;
+  }
+  /* CSS border triangles */
+  .Tooltip-Tip.right::before {
+    left: calc(var(--tooltip-arrow-size) * -1);
+    top: 50%;
+    transform: translateX(0) translateY(-50%);
+    border-right-color: black;
+  }
