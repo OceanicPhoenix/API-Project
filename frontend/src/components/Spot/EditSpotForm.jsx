@@ -94,7 +94,7 @@ function EditSpotForm() {
       <div className="form-container">
         <form className='new-spot' onSubmit={handleSubmit}>
           <h2>Update your Spot</h2>
-          <h3>Where's your place located?</h3>
+          <h3>Where is your place located?</h3>
           <h4>Guests will only get your exact address once they booked a reservation.</h4>
           <label>
             Country
@@ -151,7 +151,7 @@ function EditSpotForm() {
           <p className='errors'>{errors.filter((validation) =>
             validation.includes("Description"))}</p>
           <h3>Create a title for your spot</h3>
-          <h4>Catch guests' attention with a spot title that highlights what makes your place special.</h4>
+          <h4>Catch guest attention with a spot title that highlights what makes your place special.</h4>
           <label>
             <input type='text'
               name='Name'

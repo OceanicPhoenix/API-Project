@@ -34,7 +34,7 @@ function LoginFormModal() {
     if (credential.length < 4 || password.length < 6) disableButton = true;
     setDisable(disableButton)
 
-  })
+  },[credential.length, password.length])
 
 
   const handleSubmit = (e) => {

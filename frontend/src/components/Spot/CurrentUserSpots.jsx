@@ -70,7 +70,7 @@ function CurrentUserSpots() {
       {spots.length === 0 ?
         (
           <div>
-            <h2>You don't have any spots</h2>
+            <h2>You do not have any spots</h2>
           </div>
         )
         :

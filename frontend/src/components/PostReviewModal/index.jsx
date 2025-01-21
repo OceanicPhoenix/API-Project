@@ -1,17 +1,11 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import StarRating from "./StarRating";
-import {createAReviewThunk} from '../../store/reviews'
-import { useModal } from "../../context/Modal";
 import './PostReviewModal.css';
 
-function PostReviewModal(spotId) {
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
+function PostReviewModal() {
   const [review, setReview] = useState("");
   const [stars, setStars] = useState(0);
-  const { closeModal } = useModal();
 
   useEffect(() => {
     console.log('PostReviewModal review', review)
@@ -21,9 +15,9 @@ function PostReviewModal(spotId) {
 
 
   const handleSubmit = async () => {
-    let createdReview;
+    // let createdReview;
     try {
-      createdReview = await dispatch(createAReviewThunk(user, spotId, review, stars)) .then(closeModal)
+      // createdReview = await dispatch(createAReviewThunk(user, spotId, review, stars)) .then(closeModal)
     } catch (error) {
       console.log(error);
     }
