@@ -147,8 +147,8 @@ async function getSpots(req,res){
         else if (maxPrice) options.where.price = { [Op.lte]: +maxPrice };
 
 
-    console.log('tonyspots options', options)
-    const spots = await Spot.findAll(options);
+        const spots = await Spot.findAll(options);
+        console.log('tonyspots options', spots[0].toJSON())
 
          const formattedSpots = spots.map((spot)=>{
             const spotJson = spot.toJSON();
