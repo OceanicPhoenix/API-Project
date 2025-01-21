@@ -149,8 +149,8 @@ router.get('/current', requireAuth, async(req,res)=>{
                 city: bookingJson.Spot.city,
                 state: bookingJson.Spot.state,
                 country: bookingJson.Spot.country,
-                lat: bookingJson.Spot.lat,
-                lng: bookingJson.Spot.lng,
+                // lat: bookingJson.Spot.lat,
+                // lng: bookingJson.Spot.lng,
                 name: bookingJson.Spot.name,
                 price: bookingJson.Spot.price,
                 previewImage: bookingJson.Spot.previewImage

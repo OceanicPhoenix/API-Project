@@ -101,10 +101,10 @@ async function getSpots(req,res){
     let {
         page,
         size,
-        minLat,
-        maxLat,
-        minLng,
-        maxLng,
+        // minLat,
+        // maxLat,
+        // minLng,
+        // maxLng,
         minPrice,
         maxPrice
     } = req.query;
@@ -134,13 +134,13 @@ async function getSpots(req,res){
     }
 
 
-        if (minLat && maxLat) options.where.lat = { [Op.between]: [minLat, maxLat] };
-        else if (minLat) options.where.lat = { [Op.gte]: minLat };
-        else if (maxLat) options.where.lat = { [Op.lte]: maxLat };
+        // if (minLat && maxLat) options.where.lat = { [Op.between]: [minLat, maxLat] };
+        // else if (minLat) options.where.lat = { [Op.gte]: minLat };
+        // else if (maxLat) options.where.lat = { [Op.lte]: maxLat };
 
-        if (minLng && maxLng) options.where.lng = { [Op.between]: [+minLng, +maxLng] };
-        else if (minLng) options.where.lng = { [Op.gte]: +minLng };
-        else if (maxLng) options.where.lng = { [Op.lte]: +maxLng };
+        // if (minLng && maxLng) options.where.lng = { [Op.between]: [+minLng, +maxLng] };
+        // else if (minLng) options.where.lng = { [Op.gte]: +minLng };
+        // else if (maxLng) options.where.lng = { [Op.lte]: +maxLng };
 
         if (minPrice && maxPrice) options.where.price = { [Op.between]: [+minPrice, +maxPrice] };
         else if (minPrice) options.where.price = { [Op.gte]: +minPrice };
@@ -181,8 +181,8 @@ async function getSpots(req,res){
             city: spotJson.city,
             state: spotJson.state,
             country: spotJson.country,
-            lat: Number(spotJson.lat),
-            lng: Number(spotJson.lng),
+            // lat: Number(spotJson.lat),
+            // lng: Number(spotJson.lng),
             name: spotJson.name,
             description: spotJson.description,
             price: Number(spotJson.price),
@@ -282,8 +282,8 @@ router.get('/:spotId',async(req,res)=>{
             city: spot.city,
             state: spot.state,
             country: spot.country,
-            lat: spot.lat,
-            lng: spot.lng,
+            // lat: spot.lat,
+            // lng: spot.lng,
             name: spot.name,
             description: spot.description,
             price: spot.price,
@@ -387,8 +387,8 @@ router.put(
             city,
             state,
             country,
-            lat,
-            lng,
+            // lat,
+            // lng,
             name,
             description,
             price
