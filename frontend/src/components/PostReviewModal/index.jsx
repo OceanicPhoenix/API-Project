@@ -3,20 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import StarRating from "./StarRating";
 import {createAReviewThunk} from '../../store/reviews'
-// import { useNavigate } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import './PostReviewModal.css';
 
 function PostReviewModal(spotId) {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   const user = useSelector((state) => state.session.user);
   const [review, setReview] = useState("");
   const [stars, setStars] = useState(0);
   const { closeModal } = useModal();
 
-
-  const userId = user.id;
   useEffect(() => {
     console.log('PostReviewModal review', review)
     console.log('PostReviewModal stars', stars)
