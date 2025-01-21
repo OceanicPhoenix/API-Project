@@ -148,7 +148,7 @@ async function getSpots(req,res){
 
 
         const spots = await Spot.findAll(options);
-        console.log('tonyspots options', spots[0].toJSON())
+        console.log('tonyspots options', spots[0].toJSON(), spots[1].toJSON())
 
          const formattedSpots = spots.map((spot)=>{
             const spotJson = spot.toJSON();
