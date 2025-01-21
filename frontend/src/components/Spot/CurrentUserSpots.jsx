@@ -1,16 +1,13 @@
 import { getCurrentUserSpotsThunk } from "../../store/spots";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { NavLink } from "react-router-dom";
 import './CurrentUserSpots.css'
 import { useNavigate } from "react-router-dom";
-// import EditSpotForm from './EditSpotForm';
 import DeleteSpotModal from '../DeleteSpotModal';
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
-// import { Link } from "react-router-dom";
 
 function CurrentUserSpots() {
-  const history = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   let spots = useSelector((state) => state.spots.allSpots);
   const [showMenu, setShowMenu] = useState(false);
@@ -37,7 +34,6 @@ function CurrentUserSpots() {
 
 
   useEffect(() => {
-
     dispatch(getCurrentUserSpotsThunk());
   }, [dispatch]);
 
@@ -46,17 +42,16 @@ function CurrentUserSpots() {
 
 
   const handleUpdate = (id) => {
-    console.log('spotId', id)
     let path = `/spots/${id}/edit`;
-    history.push(path);   
+    navigate(path);   
   };
   const handleClicker = (id) => {
     let path = `/spots/${id}`;
-    history.push(path)
+    navigate(path);  
   }
   const redirectToCreateForm = () => {
     let path = `/spots/new`;
-    history.push(path)
+    navigate(path);  
   }
 
   return (
@@ -76,12 +71,7 @@ function CurrentUserSpots() {
         (
           <div>
             <h2>You don't have any spots</h2>
-            {/* <Link to={`spots/spots/new}`}>Create a New Spot</Link> */}
-            {/* <button onClick={() => redirectToCreateForm()}>
-              Create a New Spot
-            </button> */}
           </div>
-
         )
         :
         (
@@ -102,7 +92,7 @@ function CurrentUserSpots() {
                       <div className="location_rating" onClick={() => handleClicker(spot.id)}>
                         <p className="location" onClick={() => handleClicker(spot.id)}>{spot.city}, {spot.state}</p>
 
-                        {!spot.avgRating == null ? (<p className="rating" onClick={() => handleClicker(spot.id)}> <i className="fa-solid fa-star"></i>{spot.avgRating}</p>) : (<p onClick={() => handleClicker(spot.id)}>★New</p>)}
+                        {!spot.avgRating == null ? (<p className="rating" onClick={() => handleClicker(spot.id)}>★ {spot.avgRating}</p>) : (<p onClick={() => handleClicker(spot.id)}>★ New</p>)}
                       </div>
                       <div className="price" onClick={() => handleClicker(spot.id)}>
                         <p onClick={() => handleClicker(spot.id)}>${spot.price} night</p>
@@ -110,10 +100,8 @@ function CurrentUserSpots() {
                     </div>
                     <div className="operation">
                       <button className="update-btn" onClick={() => handleUpdate(spot.id)}>
-
-                        update
+                        Update
                       </button>
-                      {/* NOW  */}
                       <div className="delete-button">
                         <p>
                           <OpenModalMenuItem

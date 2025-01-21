@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import StarRating from "./StarRating";
 import {createAReviewThunk} from '../../store/reviews'
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import './PostReviewModal.css';
 
 function PostReviewModal(spotId) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const user = useSelector((state) => state.session.user);
   const [review, setReview] = useState("");
   const [stars, setStars] = useState(0);
@@ -31,7 +31,7 @@ function PostReviewModal(spotId) {
     try {
       createdReview = await dispatch(createAReviewThunk(user, spotId, review, stars)) .then(closeModal)
 
-      navigate(`/spots/${spotId.id}`);
+      // navigate(`/spots/${spotId.id}`);
     } catch (error) {
       console.log(error);
     }
@@ -51,11 +51,10 @@ function PostReviewModal(spotId) {
         <StarRating stars={stars} setStars={setStars} />
 
         <button
-          className="button"
+          className="submit-button"
           onClick={handleSubmit}
           disabled={review.length < 10 || stars === 0}
-        >
-          <p className="submit-button">Submit your review</p>
+        >Submit your review
         </button>
 
       </div>

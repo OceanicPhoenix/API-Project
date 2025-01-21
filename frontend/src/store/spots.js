@@ -37,8 +37,10 @@ export const getAllSpotsThunk = () => async (dispatch) => {
 };
 
 export const getCurrentUserSpotsThunk = () => async (dispatch) => {
+  console.log('in thunk anthony') 
   const res = await csrfFetch("/api/spots/current");
   const data = await res.json();
+  console.log('res', data)
   if (data.Spots) {
     dispatch(getSpots(data.Spots))
   }

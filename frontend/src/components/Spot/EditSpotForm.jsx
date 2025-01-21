@@ -14,13 +14,11 @@ function EditSpotForm() {
   const dispatch = useDispatch();
 
   const spot = useSelector((state) => state.spots.spot);
-//   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(getSpotDetailThunk(id));
   }, [dispatch, id]);
 
-  //run after first render
   useEffect(() => {
     console.log('here')
     setCountry(spot.country)
@@ -31,16 +29,6 @@ function EditSpotForm() {
     setName(spot.name)
     setPrice(spot.price)
   }, [spot])
-
-
-  // const [country, setCountry] = useState(spot.country);
-  // const [address, setAddress] = useState(spot.address);
-  // const [city, setCity] = useState(spot.city);
-  // const [state, setState] = useState(spot.state);
-  // const [description, setDescription] = useState(spot.description);
-  // const [name, setName] = useState(spot.name);
-  // const [price, setPrice] = useState(spot.price);
-  // const [errors, setErrors] = useState([]);
 
   const [country, setCountry] = useState('');
   const [address, setAddress] = useState('');
@@ -68,9 +56,6 @@ function EditSpotForm() {
     if (!address) {
       errorsArray.push("Street address is required")
     }
-    // if (description.length < 30) {
-    //   errorsArray.push("Description needs a minimum of 30 characters")
-    // }
     if (!name) {
       errorsArray.push("Name is required");
     }
@@ -82,10 +67,6 @@ function EditSpotForm() {
   }, [country, address, city, state, description, name, price])
 
 
-  //***
-  // if (!spot.SpotImages) {
-  //   return null;
-  // }
   if (!spot) return null;
   if (!spot.Owner) return null;
 
@@ -101,7 +82,6 @@ function EditSpotForm() {
       description: description,
       name: name,
       price: price,
-      // id: id
     }
     await dispatch(updateSpot(newSpot, id));
     navigate(`/spots/${spot.id}`)
@@ -115,7 +95,7 @@ function EditSpotForm() {
         <form className='new-spot' onSubmit={handleSubmit}>
           <h2>Update your Spot</h2>
           <h3>Where's your place located?</h3>
-          <h4>Guests will only get your exact address once they booked a reservation.page</h4>
+          <h4>Guests will only get your exact address once they booked a reservation.</h4>
           <label>
             Country
             <input type='text'
@@ -144,8 +124,7 @@ function EditSpotForm() {
                 onChange={(e) => setCity(e.target.value)}
               />
             </label>
-            {/* <p className='errors'>{errors.filter((validation) =>
-              validation.includes("City"))}</p> */}
+
             <label className="state">
               State
               <input type='text'
@@ -154,8 +133,6 @@ function EditSpotForm() {
                 onChange={(e) => setState(e.target.value)}
               />
             </label>
-            {/* <p className='errors'>{errors.filter((validation) =>
-              validation.includes("State"))}</p> */}
           </div>
           <label className="state-city-errors">
             <span className='errors-city'>{errors.filter((validation) =>

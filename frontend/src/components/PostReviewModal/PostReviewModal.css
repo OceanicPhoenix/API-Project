@@ -13,6 +13,11 @@ textarea {
     /* position: absolute; */
   }
   
+  .submit-button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+  }
+
   .submit-button {
     background-color: #ff5a5f;
     border: none;
@@ -20,8 +25,9 @@ textarea {
     color: white;
     cursor: pointer;
     font-size: 13px;
-    max-height: 1px;
-    width: 100%;
-    padding: 14px 24px 34px;
-  
+    height: 1px;
+    width: 45%;
+    padding: 10px 20px 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }

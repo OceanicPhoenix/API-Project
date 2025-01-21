@@ -115,7 +115,7 @@ function NewSpotForm() {
         <form className='new-spot' onSubmit={handleSubmit}>
           <h2>Create a new Spot</h2>
           <h3>Where's your place located?</h3>
-          <h4>Guests will only get your exact address once they booked a reservation.page</h4>
+          <h4>Guests will only get your exact address once they booked a reservation.</h4>
           <label>
             Country
             <input type='text'
@@ -147,8 +147,6 @@ function NewSpotForm() {
                 placeholder="city"
               />
             </label>
-            {/* <p className='errors'>{errors.filter((validation) =>
-              validation.includes("City"))}</p> */}
             <label className="state">
               State
               <input type='text'
@@ -159,8 +157,6 @@ function NewSpotForm() {
 
               />
             </label>
-            {/* <p className='errors'>{errors.filter((validation) =>
-              validation.includes("State"))}</p> */}
           </div>
           <label className="state-city-errors">
             <span className='errors-city'>{errors.filter((validation) =>
@@ -202,7 +198,6 @@ function NewSpotForm() {
             <input type='text'
               name='price'
               value={price}
-              // onChange={(e) => setPrice(e.target.value)}
               onChange={handlePrice}
               placeholder="Price per night (USD)"
               className="money-number"
@@ -266,7 +261,6 @@ function NewSpotForm() {
 
           <button className="submit-btn"
             type="submit"
-            // if it is true, button  will be disabled
             disabled={errors.length > 0}
           >
             Create Spot

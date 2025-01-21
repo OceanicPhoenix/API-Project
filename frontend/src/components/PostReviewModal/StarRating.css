@@ -10,9 +10,6 @@ button {
   .off {
     color: #ccc;
   }
-  
-  
-  
   input[type=radio]{
     display: none;
   }

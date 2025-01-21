@@ -14,16 +14,16 @@ function dateConvert(date) {
   let y = newDate.getFullYear();
   let m = newDate.getMonth();
   let finalM = month[m];
-  return `${finalM},${y}`
+  return `${finalM} ${y}`
 }
 
 function Review() {
   const user = useSelector((state) => state.session.user);
-  let { id } = useParams();   //spotId
+  let { id } = useParams();
   id = parseInt(id)
   const dispatch = useDispatch();
-  const reviews = useSelector((state) => state.reviews.reviews); //extract User
-  const spot = useSelector((state) => state.spots.spot); //extract avgStarRating
+  const reviews = useSelector((state) => state.reviews.reviews);
+  const spot = useSelector((state) => state.spots.spot); 
   let unit;
 
   console.log('spotId!!!!!', id)
@@ -32,12 +32,6 @@ function Review() {
 
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
-
-
-//   const openMenu = () => {
-//     if (showMenu) return;
-//     setShowMenu(true);
-//   };
 
   useEffect(() => {
     if (!showMenu) return;
@@ -66,10 +60,6 @@ function Review() {
   useEffect(() => {
     dispatch(getReviewsThunk(id));
   }, [dispatch, id]);
-//   const handleDelete = (reviewId) => {
-//     dispatch(deleteReviewThunk(reviewId, id));  //pass reviewid and spot id as arguments
-//     // closeModal();
-//   }
 
   return (
     <>
@@ -77,7 +67,7 @@ function Review() {
         (<div className="review-container-component">
           <div className="review-container-title">
             {reviews.length > 0 ?
-              (<h2> <i className="fa-solid fa-star"></i> {spot.avgStarRating}  . {reviews.length} {unit} </h2>) : (<h2>new</h2>)
+              (<h2>★ {spot.avgStarRating} · {reviews.length} {unit} </h2>) : (<h2>New</h2>)
             }
           </div>
           <div className="review-container-main">
@@ -91,13 +81,12 @@ function Review() {
                 <div className="single-review" key={review.id}>
 
                   <div className="name">
-                  <i className="fa-solid fa-circle-user fa-lg"></i>  {review.User.firstName}-{review.User.lastName}
+                  <i className="fa-solid fa-circle-user fa-lg"></i>  {review.User.firstName} {review.User.lastName}
                   </div>
                   <div className="date">
                     {dateConvert(review.updatedAt)}
                   </div>
-
-
+                  
                   <div className="text">
                     <p>{review.review}</p>
                   </div>
@@ -121,7 +110,7 @@ function Review() {
 
         </div>) : (
           <>
-            <h2> <i className="fa-solid fa-star"></i>New</h2>
+            <h2>★ New</h2>
             {/* <div className="btn-container">{spot.Owner.id !== user.id && <ReviewButton id={id} />}</div> */}
           </>
         )

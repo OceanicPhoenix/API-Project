@@ -1,15 +1,10 @@
 import { useSelector } from "react-redux";
-// import { useParams } from "react-router-dom";
-// import { useEffect } from "react";
 import './ReserveButton.css'
-// import { getSpotDetailThunk } from "../../store/spots";
 
 function ReserveButton() {
-//   const { id } = useParams();
-//   const dispatch = useDispatch();
   let spot = useSelector((state) => state.spots.spot);
   const text = spot.numReviews > 1 ? "reviews" : "review";
-  const rating = spot.numReviews > 0 ? '★' + spot.avgStarRating : '★ New';
+  const rating = spot.numReviews > 0 ? '★' + spot.avgStarRating + '·' : '★ New';
 
   return (
     <div className="reserve-container">

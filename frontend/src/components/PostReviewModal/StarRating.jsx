@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import { useEffect } from "react";
 import './StarRating.css';
 import { FaStar } from "react-icons/fa";
 
@@ -10,14 +9,6 @@ const StarRating = ({ setStars }) => {
   const controlRate = (rating) => {
     setStars(rating);
   };
-
-  // const fixStar = (rating) => {
-  //   if (hover) {
-  //     setStars(rating);
-  //   } else {
-  //     setRating(rating);
-  //   }
-  // };
 
 
   return (
