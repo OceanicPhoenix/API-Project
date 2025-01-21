@@ -34,14 +34,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      lat: {
-        allowNull: false,
-        type: Sequelize.DECIMAL
-      },
-      lng: {
-        allowNull: false,
-        type: Sequelize.DECIMAL
-      },
+      // lat: {
+      //   allowNull: false,
+      //   type: Sequelize.DECIMAL
+      // },
+      // lng: {
+      //   allowNull: false,
+      //   type: Sequelize.DECIMAL
+      // },
       name: {
         allowNull: false,
         type: Sequelize.STRING

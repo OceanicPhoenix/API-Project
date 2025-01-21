@@ -22,12 +22,12 @@ const router = express.Router();
         check('country')
             .exists({ checkFalsy: true })
             .withMessage('Country is required'),
-        check('lat')
-            .exists({ checkFalsy: true })
-            .withMessage('Latitude is not valid'),
-        check('lng')
-            .exists({ checkFalsy: true })
-            .withMessage('Longitude is not valid'),
+        // check('lat')
+        //     .exists({ checkFalsy: true })
+        //     .withMessage('Latitude is not valid'),
+        // check('lng')
+        //     .exists({ checkFalsy: true })
+        //     .withMessage('Longitude is not valid'),
         check('name')
             .exists({ checkFalsy: true })
             .withMessage('Name is required')
@@ -69,22 +69,22 @@ const validateSpotQuery = [
         .withMessage("Size must be greater than or equal to 1")
         .isInt({ max: 10 })
         .withMessage("Size must be less than or equal to 20"),
-    query('minLat')
-        .optional()
-        .isFloat()
-        .withMessage("Minimum latitude is invalid"),
-    query('maxLat')
-        .optional()
-        .isFloat()
-        .withMessage("Maximum latitude is invalid"),
-    query('minLng')
-        .optional()
-        .isFloat()
-        .withMessage("Minimum longitude is invalid"),
-    query('maxLng')
-        .optional()
-        .isFloat()
-        .withMessage("Maximum longitude is invalid"),
+    // query('minLat')
+    //     .optional()
+    //     .isFloat()
+    //     .withMessage("Minimum latitude is invalid"),
+    // query('maxLat')
+    //     .optional()
+    //     .isFloat()
+    //     .withMessage("Maximum latitude is invalid"),
+    // query('minLng')
+    //     .optional()
+    //     .isFloat()
+    //     .withMessage("Minimum longitude is invalid"),
+    // query('maxLng')
+    //     .optional()
+    //     .isFloat()
+    //     .withMessage("Maximum longitude is invalid"),
     query('minPrice')
         .optional()
         .isFloat({ min: 0 })
@@ -111,7 +111,8 @@ async function getSpots(req,res){
 
 
         page = page ? +page : 1;
-        size = size ? +size : 20;
+        // TODO: Change default size to 20, may need to change pagination on frontend
+        size = size ? +size : 100;
         req.query.page = page;
         req.query.size = size;
 
@@ -146,14 +147,15 @@ async function getSpots(req,res){
         else if (maxPrice) options.where.price = { [Op.lte]: +maxPrice };
 
 
+    console.log('tonyspots options', options)
     const spots = await Spot.findAll(options);
 
          const formattedSpots = spots.map((spot)=>{
             const spotJson = spot.toJSON();
             const reviews = spot.Reviews;
             const spotImages = spot.SpotImages;
-            console.log('getting spot images we');
-            console.log('spot images',spotImages);
+            // console.log('getting spot images we');
+            // console.log('spot images',spotImages);
 
             //avg rating
             if (reviews.length > 0) {
@@ -244,6 +246,8 @@ router.get('/', validateSpotQuery, async (req, res) => {
 router.get('/current', requireAuth, async (req, res) => {
     try {
       const allSpotArr = await getSpots(req, res);
+      console.log('allSpotArr Brian Chan', allSpotArr);
+      console.log('id', req.user.id);
       const userSpotsArr = allSpotArr.filter((spot) => spot.ownerId === req.user.id);
       res.json({ Spots: userSpotsArr });
     } 
@@ -318,8 +322,6 @@ router.post('/', requireAuth, validateSpot, async (req, res) => {
         city,
         state,
         country,
-        lat,
-        lng,
         name,
         description,
         price
