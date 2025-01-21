@@ -20,8 +20,6 @@ function PostReviewModal(spotId) {
   useEffect(() => {
     console.log('PostReviewModal review', review)
     console.log('PostReviewModal stars', stars)
-    console.log('PostReviewModal spotId', spotId["id"])
-    console.log('PostReviewModal userId',userId)
   }, [review, stars]);
 
 
@@ -30,8 +28,6 @@ function PostReviewModal(spotId) {
     let createdReview;
     try {
       createdReview = await dispatch(createAReviewThunk(user, spotId, review, stars)) .then(closeModal)
-
-      // navigate(`/spots/${spotId.id}`);
     } catch (error) {
       console.log(error);
     }

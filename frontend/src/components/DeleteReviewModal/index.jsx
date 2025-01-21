@@ -1,7 +1,4 @@
-// import { useState } from "react";
 import { useDispatch} from "react-redux";
-// import { useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { deleteReviewThunk } from '../../store/reviews'
 import './DeleteReviewModal.css';
@@ -10,7 +7,6 @@ import './DeleteReviewModal.css';
 
 function DeleteReviewModal({ id, spotId }) {
   const dispatch = useDispatch();
-//   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
   console.log('now', id, spotId)  //
 
