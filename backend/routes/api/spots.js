@@ -274,6 +274,7 @@ router.get('/:spotId',async(req,res)=>{
         if (reviews.length) {
             const sum = reviews.reduce((acc, review) => acc + review.stars, 0);
             spot.avgStarRating = (sum / (reviews.length)).toFixed(1);//round to decimal
+            console.log('brianavgStarRating', spot.avgStarRating, reviews);
         }
         const spotByPkRes = {
             id: spot.id,

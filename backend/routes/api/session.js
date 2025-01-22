@@ -26,6 +26,20 @@ router.post(
   validateLogin,
   async (req, res, next) => {
     const { credential, password } = req.body;
+    // if ( credential === process.env.DEMO_USERNAME && password === process.env.DEMO_PASSWORD) {
+    //   const safeUser = {
+    //     id: 'demo-',  // Use a specific ID for the demo user
+    //     email: 'demo@example.com',
+    //     username: 'demoUser',
+    //     firstName: 'Demo',
+    //     lastName: 'User'
+    //   };
+    //   await setTokenCookie(res, safeUser);
+      
+    //   return res.json({
+    //     user: safeUser
+    //   });
+    // }
 
     const user = await User.unscoped().findOne({
       where: {
@@ -33,8 +47,10 @@ router.post(
           username: credential,
           email: credential
         }
-      } 
+      }
     });
+
+    console.log('credentialsbtony', user, credential, password, user.hashedPassword.toString());
 
     if (!user || !bcrypt.compareSync(password, user.hashedPassword.toString())) {
       const err = new Error('Invalid credentials');
