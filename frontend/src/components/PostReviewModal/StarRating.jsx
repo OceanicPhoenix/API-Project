@@ -16,6 +16,7 @@ const StarRating = ({ setStars }) => {
 
       <div className="star-rating">
         {[...Array(5)].map((star, index) => {
+          console.log('briansstars', star)
           const currentValue = index + 1;
           return (
             <>

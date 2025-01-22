@@ -14,10 +14,13 @@ function LoginFormModal() {
   const { closeModal } = useModal();
   const [disable, setDisable] = useState(true)
 
-
   const handleDemo = (e) => {
-    e.preventDefault()
-    return dispatch(sessionActions.login({ credential: "demo@user.io", password: "password" }))
+    e.preventDefault();
+    const demoCredential = 'demoUser';
+    const demoPassword = 'demoPass';
+  
+    // Dispatch the login action
+    return dispatch(sessionActions.login({ credential: demoCredential, password: demoPassword }))
       .then(closeModal)
       .catch(async (res) => {
         const data = await res.json();
@@ -25,8 +28,7 @@ function LoginFormModal() {
           setErrors(data.errors);
         }
       });
-  }
-
+  };
 
   useEffect(() => {
     let disableButton = false
@@ -84,7 +86,7 @@ function LoginFormModal() {
           <p className="errors">{errors.credential}</p>
         )}
         <button className="login-submit-btn"  type="submit" disabled={disable}>Log In</button>
-        <button className="login-demoUser" type="demo" onClick={handleDemo}>Demo User</button>
+        <button className="login-demoUser" type="button" onClick={handleDemo}>Demo User</button>
       </form>
     </div >
     </>
